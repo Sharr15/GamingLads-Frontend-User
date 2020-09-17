@@ -2,7 +2,9 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
-import Contact from "../views/Contact.vue";
+import SignIn from "../views/SignIn.vue";
+import SignUp from "../views/SignUp.vue";
+import Profile from "../views/Profile.vue";
 
 Vue.use(VueRouter);
 
@@ -11,7 +13,11 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home
-    //dit is dus de eerste pagina die hij laad want path = / oki ;)\
+  },
+  {
+    path: "/signup",
+    name: "SignUp",
+    component: SignUp
   },
   {
     path: "/about",
@@ -22,9 +28,14 @@ const routes = [
     component: About
   },
   {
-    path: "/contact",
-    name: "Contact",
-    component: Contact
+    path: "/profile",
+    name: "profile",
+    component: Profile
+  },
+  {
+    path: "/signin",
+    name: "SignIn",
+    component: SignIn
   }
 ];
 

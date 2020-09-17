@@ -1,33 +1,47 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/contact">Contact</router-link>
+  <v-app>
+    <div>
+      <v-app-bar color="deep-purple accent-4" dense dark>
+        <v-menu left bottom>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn icon v-bind="attrs" v-on="on">
+              <v-icon large>mdi-account-box</v-icon>
+            </v-btn>
+          </template>
+        </v-menu>
+
+        <v-toolbar-title>Gaming Lads</v-toolbar-title>
+
+        <v-spacer></v-spacer>
+
+        <v-menu left bottom>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn icon v-bind="attrs" v-on="on">
+              <v-icon large>mdi-account-box</v-icon>
+            </v-btn>
+          </template>
+
+          <v-list>
+            <v-list-item @click.native="$router.push('SignIn')">
+              <v-list-item-title>Sign in</v-list-item-title>
+            </v-list-item>
+            <v-list-item @click.native="$router.push('SignUp')">
+              <v-list-item-title>Sign up</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </v-app-bar>
     </div>
-    <router-view />
-  </div>
+    <router-view></router-view>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+export default {
+  name: "App",
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+  data: () => ({
+    //
+  })
+};
+</script>
