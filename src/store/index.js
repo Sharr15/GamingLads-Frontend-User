@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import vuetify from "vuetify";
+import auth from "./auth.js";
 Vue.use(Vuex);
 
 new Vue({
@@ -11,5 +12,7 @@ export default new Vuex.Store({
   state: {},
   mutations: {},
   actions: {},
-  modules: {}
+  modules: {
+    auth
+  }
 });
