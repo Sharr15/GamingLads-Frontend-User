@@ -13,12 +13,15 @@
                     <v-tooltip bottom> </v-tooltip>
                   </v-toolbar>
                   <v-card-text>
-                    <v-form>
+                    <v-form @submit.prevent="submit" ref="form">
                       <v-text-field
                         label="Username"
                         name="username"
                         prepend-icon="mdi-account"
                         type="text"
+                        v-model="form.username"
+                        :rules="[v => !!v || 'Username is required']"
+                        required
                       ></v-text-field>
 
                       <v-text-field
@@ -27,14 +30,23 @@
                         name="password"
                         prepend-icon="mdi-lock"
                         type="password"
+                        v-model="form.password"
+                        :rules="[v => !!v || 'Password is required']"
+                        required
                       ></v-text-field>
 
                       <v-text-field
                         id="password"
                         label="Re-enter password"
-                        name="password"
+                        name="secondPassword"
                         prepend-icon="mdi-lock"
                         type="password"
+                        v-model="form.secondPassword"
+                        :rules="[
+                          v => !!v || 'Re-enter password is required',
+                          passwordConfirmationRule
+                        ]"
+                        required
                       ></v-text-field>
                     </v-form>
                   </v-card-text>
@@ -44,7 +56,7 @@
                       color="deep-purple accent-4"
                       dense
                       dark
-                      @click.native="$router.push('signin')"
+                      @click.native="submit"
                     >
                       Sign up
                     </v-btn>
@@ -56,5 +68,52 @@
         </v-main>
       </v-app>
     </v-app>
-  </div></template
->
+  </div>
+</template>
+
+<script>
+import axios from "axios";
+//import { mapActions } from "vuex";
+export default {
+  name: "signup",
+  components: {
+    //
+  },
+
+  data() {
+    return {
+      form: {
+        username: "",
+        password: "",
+        secondPassword: ""
+      }
+    };
+  },
+
+  computed: {
+    passwordConfirmationRule() {
+      return () =>
+        this.password === this.SecondPassword || "Password must match";
+    }
+  },
+
+  methods: {
+    async submit() {
+      if (this.$refs.form.validate()) {
+        const res = await axios.post("user/signUp", this.form);
+        if (res.status === 200) {
+          console.log("Signed up");
+          this.$router.push("signIn");
+        } else {
+          console.log(res.data);
+          console.log(res.status);
+          console.log(res.headers);
+        }
+      } else {
+        console.log("Not validated by rules");
+        alert("Please try again");
+      }
+    }
+  }
+};
+</script>
