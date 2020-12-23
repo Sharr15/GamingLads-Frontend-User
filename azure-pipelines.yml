@@ -9,14 +9,6 @@ variables:
   DOCKER_CLI_EXPERIMENTAL: enabled
 
 steps:
-- task: Docker@2
-  displayName: Building Docker Image
-  inputs:
-    command: 'buildAndPush'
-    Dockerfile: 'Dockerfile'
-    tags: |
-      $(Build.BuildId)
-      latest
 - task: PushToHeroku@0
   displayName: PushToHeroku
   inputs:
