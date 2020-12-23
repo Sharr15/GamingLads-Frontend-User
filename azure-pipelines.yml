@@ -19,10 +19,10 @@ steps:
 - task: Docker@2
   displayName: Building Docker Image
   inputs:
-    command: buildAndPush
-    Dockerfile: Dockerfile
+    command: 'buildAndPush'
+    Dockerfile: 'Dockerfile'
     tags: |
-      $(Build.SourcesDirectory)
+      $(Build.BuildId)
       latest
 - task: PushToHeroku@0
   displayName: PushToHeroku
