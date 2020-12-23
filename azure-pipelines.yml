@@ -1,21 +1,17 @@
-# Node.js with Vue
-# Build a Node.js project that uses Vue.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
-
+name: $(Date:yyyyMMdd)$(Rev:.r)
 trigger:
 - main
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'windows-2019'
+
+variables:
+  DOCKER_CLI_EXPERIMENTAL: enabled
 
 steps:
-- task: NodeTool@0
+- task: PushToHeroku@0
+  displayName: PushToHeroku
   inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
-
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
+    ApiKey: 'd0e26bf9-46d6-49bb-a3a0-aaab5063d904'
+    AppName: 'gaminglads-frontend-user'
+    PushRoot: ''
