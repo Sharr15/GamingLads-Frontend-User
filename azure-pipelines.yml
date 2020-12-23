@@ -3,7 +3,10 @@ trigger:
 - main
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'windows-2019'
+
+variables:
+  DOCKER_CLI_EXPERIMENTAL: enabled
 
 steps:
 - task: Docker@2
