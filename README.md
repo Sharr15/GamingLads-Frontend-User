@@ -1,4 +1,4 @@
-# my-app
+# GamingLads-Frontend-User
 
 ## Project setup
 ```
