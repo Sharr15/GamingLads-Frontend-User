@@ -57,6 +57,7 @@
 </template>
 <script>
 //import { mapActions } from "vuex";
+import axios from "axios";
 export default {
   name: "signin",
   components: {
@@ -77,12 +78,16 @@ export default {
     //     signIn: "auth/signIn"
     //   }),
     async submit() {
-      this.$router.push("match");
-      // this.signIn(this.form).then(() => {
-      //   this.$router.replace({
-      //    name: "match"
-      //  })
-      //}
+      const res = await axios.post("user/signIn/user", this.form);
+      if (res.status === 200) {
+        console.log("Signed in");
+        this.$router.push("match");
+        axios.defaults.headers.common["Authorization"] = "Bearer ${res.data}";
+        localStorage.setItem("token", res.data);
+      } else {
+        console.log(res.status);
+        console.log(res.headers);
+      }
     }
   }
 };

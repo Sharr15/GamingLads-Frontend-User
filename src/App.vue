@@ -37,7 +37,7 @@
               <!-- <v-list-item @click.prevent="signOut"></v-list-item> -->
               <v-list-item-title>Profile</v-list-item-title>
             </v-list-item>
-            <v-list-item v-on:click="$router.push('home')">
+            <v-list-item v-on:click="signOut()">
               <v-list-item-title>Sign Out</v-list-item-title>
             </v-list-item>
             <!--</template> -->
@@ -59,15 +59,22 @@
 
 <script>
 //import { mapGetters, mapActions } from "vuex";
-//export default {
-// name: "App",
-//computed: {
-//...mapGetters({
-// authenticated: "auth/authenticated",
-// user: "auth/user"
-//  })
-// },
-// methods: { ...mapActions({signOutAction: "auth/signOut"}),
-// signOut(){this.signOutAction().then(() => {this.$router.replace({name: "home"})})}}
-//};
+export default {
+  name: "App",
+  //computed: {
+  //...mapGetters({
+  // authenticated: "auth/authenticated",
+  // user: "auth/user"
+  //  })
+  // },
+  // methods: { ...mapActions({signOutAction: "auth/signOut"}),
+  // signOut(){this.signOutAction().then(() => {this.$router.replace({name: "home"})})}}
+  //};
+  methods: {
+    signOut() {
+      localStorage.clear();
+      this.$router.push("home");
+    }
+  }
+};
 </script>
