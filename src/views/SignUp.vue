@@ -100,7 +100,10 @@ export default {
   methods: {
     async submit() {
       if (this.$refs.form.validate()) {
-        const res = await axios.post("user/signUp", this.form);
+        const res = await axios.post(
+          "https://gaminglads-gateway.herokuapp.com/user/signUp",
+          this.form
+        );
         if (res.status === 200) {
           console.log("Signed up");
           this.$router.push("signIn");

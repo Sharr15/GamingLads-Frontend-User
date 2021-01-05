@@ -78,7 +78,10 @@ export default {
     //     signIn: "auth/signIn"
     //   }),
     async submit() {
-      const res = await axios.post("user/signIn/user", this.form);
+      const res = await axios.post(
+        "https://gaminglads-gateway.herokuapp.com/user/signIn/user",
+        this.form
+      );
       if (res.status === 200) {
         console.log("Signed in");
         this.$router.push("match");
