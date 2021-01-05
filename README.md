@@ -1,4 +1,5 @@
-# my-app
+# GamingLads-Frontend-User
+GamingLads is a tinder-esque web application that helps gamers find fellow gamers to play with. 
 
 ## Project setup
 ```
