@@ -1,5 +1,6 @@
 # GamingLads-Frontend-User
-GamingLads is a tinder-esque web application that helps gamers find fellow gamers to play with. 
+GamingLads is a tinder-esque web application that helps gamers find fellow gamers to play with.
+All documentation can be found in gaminglads-gateway -> documentation
 
 ## Project setup
 ```
